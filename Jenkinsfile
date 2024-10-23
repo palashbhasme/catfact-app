@@ -55,7 +55,6 @@ pipeline {
             steps {
                 sh '''
                     go version
-                    go mod tidy
                     go build -v
                 '''
             }
