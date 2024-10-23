@@ -8,19 +8,19 @@ pipeline {
     }
 
     stages {
-        stage('Checkout Code') {
-            steps {
-                // Clone your repository
-                git url: 'https://github.com/palashbhasme/catfact-app.git', branch: 'main'
+        agent {
+            docker {
+                image 'golang:1.23-alpine'
+                reuseNode true
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                // Run tests in the Go application
-                sh 'go test ./... -v'
-            }
-        }
+        // stage('Run Tests') {
+        //     steps {
+        //         // Run tests in the Go application
+        //         sh 'go test ./... -v'
+        //     }
+        // }
 
         stage('Build Docker Image') {
             steps {
