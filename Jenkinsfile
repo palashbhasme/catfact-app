@@ -11,6 +11,8 @@ pipeline {
             }
             steps {
                 sh '''
+                    export GOCACHE=/tmp/.cache # Set cache to a writable location
+                    mkdir -p /tmp/.cache && chmod -R 777 /tmp/.cache
                     go version
                     go mod tidy
                     go build -v
