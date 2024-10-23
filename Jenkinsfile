@@ -1,7 +1,9 @@
 pipeline {
     agent any
 
-
+    environment {
+        GOCACHE = '/var/jenkins_home/.cache/go-build'
+    }
 
     stages {
         
