@@ -8,12 +8,7 @@ pipeline {
     }
 
     stages {
-        agent {
-            docker {
-                image 'golang:1.23-alpine'
-                reuseNode true
-            }
-        }
+        
 
         // stage('Run Tests') {
         //     steps {
@@ -23,6 +18,12 @@ pipeline {
         // }
 
         stage('Build Docker Image') {
+            agent {
+                docker {
+                    image 'golang:1.23-alpine'
+                    reuseNode true
+                }
+            }
             steps {
                 // Build the Docker image for the Go application
                 script {
@@ -32,6 +33,12 @@ pipeline {
         }
 
         stage('Setup MongoDB Container') {
+            agent {
+                docker {
+                    image 'golang:1.23-alpine'
+                    reuseNode true
+                }
+            }
             steps {
                 // Create a Docker network if it doesn't exist
                 sh '''
@@ -42,6 +49,12 @@ pipeline {
         }
 
         stage('Run Go App Container') {
+            agent {
+                docker {
+                    image 'golang:1.23-alpine'
+                    reuseNode true
+                }
+            }
             steps {
                 // Run the Go application container
                 script {
